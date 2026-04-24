@@ -1,6 +1,6 @@
 # Travel Deal Investigator — Agentic AI Chrome Plugin
 
-An Agentic AI Chrome Extension with a Python FastAPI backend powered by Google Gemini 2.0 Flash.
+An Agentic AI Chrome Extension with a Python FastAPI backend powered by Google Gemini 3.0 Flash.
 The agent investigates travel deals using a multi-step reasoning chain with 3 custom tools.
 
 ## Architecture
@@ -12,7 +12,7 @@ Chrome Extension (JS)  ──HTTP POST──►  Python FastAPI Server (localhos
   - Shows LLM logs                       - Full conversation history tracking
                                                     │
                                                     ▼
-                                            Google Gemini 2.0 Flash API
+                                            Google Gemini 3.0 Flash API
 ```
 
 ## Assignment Requirements
