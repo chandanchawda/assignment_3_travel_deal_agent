@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Deal Investigator</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Travel Deal Investigator</h1>
+          <p class="subtitle">Agentic AI · Gemini + Python FastAPI</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- API Key Section -->
+    <div id="apiKeySection" class="api-section">
+      <label for="apiKeyInput">Gemini API Key</label>
+      <div class="key-row">
+        <input type="password" id="apiKeyInput" placeholder="Enter your Gemini API key..." />
+        <button id="saveKeyBtn" class="btn-save">Save</button>
+      </div>
+      <p class="hint">Get free key → <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com</a></p>
+    </div>
+
+    <!-- Backend Status -->
+    <div id="backendStatus" class="backend-status">
+      <span class="status-dot offline"></span>
+      <span class="status-text">Checking backend...</span>
+    </div>
+
+    <!-- Input Section -->
+    <div class="input-section">
+      <div class="input-modes">
+        <button class="mode-btn active" data-mode="page">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
+          Scan Page
+        </button>
+        <button class="mode-btn" data-mode="manual">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+          Manual Input
+        </button>
+      </div>
+      <textarea id="dealInput" placeholder="Paste a travel deal here... e.g., 'Round trip flights from NYC to Tokyo for $450 in December 2025 on Delta Airlines'" rows="3"></textarea>
+      <button id="investigateBtn" class="btn-investigate" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        Investigate This Deal
+      </button>
+    </div>
+
+    <!-- Reasoning Chain -->
+    <div id="reasoningChain" class="reasoning-chain hidden">
+      <div class="chain-header">
+        <h2>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Agent Reasoning Chain
+        </h2>
+        <span id="stepCounter" class="step-counter">Step 0</span>
+      </div>
+      <div id="chainSteps" class="chain-steps"></div>
+    </div>
+
+    <!-- Final Verdict -->
+    <div id="finalVerdict" class="verdict hidden"></div>
+
+    <!-- Logs Section -->
+    <div id="logsSection" class="logs-section hidden">
+      <button id="toggleLogs" class="btn-logs">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Show LLM Logs (for submission)
+      </button>
+      <div id="logActions" class="log-actions hidden">
+        <button id="copyLogsBtn" class="btn-copy">📋 Copy Logs</button>
+      </div>
+      <pre id="logOutput" class="log-output hidden"></pre>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
